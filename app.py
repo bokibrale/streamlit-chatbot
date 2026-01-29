@@ -80,33 +80,41 @@ for msg in st.session_state.messages:  # gremo čez vsa shranjena sporočila
 # 6) FUNKCIJA: KLIC LLM (GROQ)
 # ---------------------------------
 def generate_answer(user_text: str) -> str:
-    """Pošlje pogovor na Groq LLM in vrne odgovor kot tekst."""
-    system_prompt = f"{DOMENA}\n\n{PRAVILA}"  # sistemska navodila za model
+    """Pošlje pogovor na Groq LLM in vrne odgovor kot tekst (z varnim fallbackom)."""
+    system_prompt = f"{DOMENA}\n\n{PRAVILA}"
 
-    # Zgradimo “messages” za model:
-    # - najprej system
-    # - nato celotna zgodovina (da model pozna kontekst)
-    # - na koncu novo uporabnikovo vprašanje (če še ni v zgodovini)
     messages_for_model = [{"role": "system", "content": system_prompt}]
-
-    # Dodamo zgodovino iz seje (spomin)
     for m in st.session_state.messages:
         messages_for_model.append({"role": m["role"], "content": m["content"]})
 
-    # Dodatno varovalo: če se user_text še ni dodal v session_state, ga dodamo tu
-    # (v praksi ga dodamo spodaj, ampak to je varno).
-    if not st.session_state.messages or st.session_state.messages[-1]["role"] != "user":
-        messages_for_model.append({"role": "user", "content": user_text})
+    # seznam modelov - če prvi ni na voljo, poskusi naslednjega
+    candidate_models = [
+        "llama-3.1-70b-versatile",
+        "llama-3.1-8b-instant",
+        "llama3-70b-8192",
+        "llama3-8b-8192",
+    ]
 
-    # Klic modela (izberi model, ki ti dela na Groq; pogosto: "llama-3.1-70b-versatile" ali podobno)
-    response = client.chat.completions.create(
-        model="llama-3.1-70b-versatile",
-        messages=messages_for_model,
-        temperature=0.5,  # srednje “kreativen”, a še vedno stabilen
-        max_tokens=400  # dovolj za lep, a ne predolg odgovor
+    last_error = None
+
+    for model_name in candidate_models:
+        try:
+            response = client.chat.completions.create(
+                model=model_name,
+                messages=messages_for_model,
+                temperature=0.5,
+                max_tokens=400,
+            )
+            return response.choices[0].message.content
+        except Exception as e:
+            last_error = e
+            continue
+
+    # če čisto vsi modeli padejo
+    return (
+        "Trenutno imam tehnične težave pri povezavi z jezikovnim modelom (API napaka). "
+        "Poskusi prosim ponovno čez nekaj trenutkov."
     )
-
-    return response.choices[0].message.content  # vrnemo besedilo odgovora
 
 # ---------------------------------
 # 7) VNOS UPORABNIKA (BREZ input())
