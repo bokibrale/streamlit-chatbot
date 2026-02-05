@@ -12,7 +12,7 @@ st.set_page_config(
 )
 
 st.title("💬 Pametni pomočnik")
-st.caption("Odgovarjam izključno v slovenščini in samo o vsebini spletne strani »Pametna tehnologija v vsakdanjem življenju«.")
+st.caption("Odgovarjam izključno v angleščini in samo o vsebini spletne strani »Pametna tehnologija v vsakdanjem življenju«.")
 
 # ------------------------------------------------------
 # 2) SPECIALIZACIJA (VEZANA NA TVOJO GOOGLE SITES STRAN)
