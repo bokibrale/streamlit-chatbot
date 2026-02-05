@@ -68,7 +68,7 @@ def is_in_domain(text: str) -> bool:
         "navigacija", "priporočila", "priporočilni", "algoritem", "priporočilni algoritem",
 
         # pametni dom
-        "pametni dom", "avtomatizacija", "nadzor na daljavo", "glasovni asistent",
+        "pametni dom", "smart home", "avtomatizacija", "nadzor na daljavo", "glasovni asistent",
         "pametne žarnice", "žarnice", "termostat", "varnostne kamere", "kamera",
         "pametne vtičnice", "vtičnice", "glasovni pomočniki", "povezane naprave",
     ]
