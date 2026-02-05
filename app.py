@@ -45,7 +45,7 @@ Na strani so predstavljene teme:
 
 PRAVILA = """
 Pravila odgovarjanja:
-1) Odgovarjaj izključno v slovenščini.
+1) Odgovarjaj izključno v angleščini.
 2) Odgovarjaj samo o vsebini spletne strani "Pametna tehnologija v vsakdanjem življenju"
    (Domov / Umetna inteligenca / Pametni dom).
 3) Če vprašanje ni povezano s temi temami, vljudno zavrni, npr.:
