@@ -37,6 +37,9 @@ Na strani so predstavljene teme:
 - upravljanje s telefonom ali glasovnim asistentom,
 - primeri pametnih naprav (žarnice, termostati, varnostne kamere, vtičnice, glasovni pomočniki).
 
+4) Smart home:
+- je pametni dom.
+
 Če uporabnik vpraša nekaj, kar ni povezano z zgornjimi temami, moram vprašanje vljudno zavrniti.
 """
 
