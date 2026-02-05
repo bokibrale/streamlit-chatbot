@@ -12,7 +12,7 @@ st.set_page_config(
 )
 
 st.title("💬 Pametni pomočnik")
-st.caption("Odgovarjam izključno v angleščini in samo o vsebini spletne strani »Pametna tehnologija v vsakdanjem življenju«.")
+st.caption("Odgovarjam izključno v slovenščini in samo o vsebini spletne strani »Pametna tehnologija v vsakdanjem življenju«.")
 
 # ------------------------------------------------------
 # 2) SPECIALIZACIJA (VEZANA NA TVOJO GOOGLE SITES STRAN)
@@ -37,15 +37,12 @@ Na strani so predstavljene teme:
 - upravljanje s telefonom ali glasovnim asistentom,
 - primeri pametnih naprav (žarnice, termostati, varnostne kamere, vtičnice, glasovni pomočniki).
 
-4) Smart home:
-- je pametni dom.
-
 Če uporabnik vpraša nekaj, kar ni povezano z zgornjimi temami, moram vprašanje vljudno zavrniti.
 """
 
 PRAVILA = """
 Pravila odgovarjanja:
-1) Odgovarjaj izključno v angleščini.
+1) Odgovarjaj izključno v slovenščini.
 2) Odgovarjaj samo o vsebini spletne strani "Pametna tehnologija v vsakdanjem življenju"
    (Domov / Umetna inteligenca / Pametni dom).
 3) Če vprašanje ni povezano s temi temami, vljudno zavrni, npr.:
